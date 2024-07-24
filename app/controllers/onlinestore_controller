@@ -1,0 +1,4 @@
+class OnlineshopController < ApplicationController
+  def index
+  end
+end
