@@ -76,3 +76,5 @@ group :production do
 end
 
 gem 'devise'
+
+gem 'cancancan', '~> 3.0'
