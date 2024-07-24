@@ -20,6 +20,18 @@ Rails.application.configure do
   #メールの送受信の設定
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  #SMTP設定
+  config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address: 'smtp.gmail.com',
+  port: 587,
+  domain: 'example.com',
+  user_name: '<your-email>@gmail.com',
+  password: '<your-email-password>',
+  authentication: 'plain',
+  enable_starttls_auto: true
+}
+
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
@@ -43,6 +55,8 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
+
+  
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
