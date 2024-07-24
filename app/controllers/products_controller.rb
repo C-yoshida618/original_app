@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user! これを記述するとTOPに飛ばなくなる
   load_and_authorize_resource
 
   def index
@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
+  
 
   def create
     @product = current_user.products.build(product_params)
