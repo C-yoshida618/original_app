@@ -10,6 +10,8 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      can :create, Order
+      can :manage, Order, user_id: user.id
       can :manage, Product, user_id: user.id
     end
   end
