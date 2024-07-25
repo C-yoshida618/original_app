@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'main#index'
+  
+  root to: 'main#index'
 
-  get 'portfolio', to: 'portfolio#index'
-  resources :products, only: [:index, :show]
+  get 'main', to: 'main#new'
+  
+  resources :products do 
+    resources :orders, only: [:new, :create]
+end
+  resources :orders, only: [:index, :show, :edit, :update, :destroy]
 
-  get 'order_completed', to: 'order_completed#show'
-
-  namespace :admin do
-    resources :products
-  end
-
-  # 他のルーティング設定
 end
