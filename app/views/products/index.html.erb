@@ -18,7 +18,7 @@
         <li class='list'>
           <%= link_to product_path(product) do %>
             <div class='product-img-content'>
-              <%= image_tag product.image, class: "product-img" if product.image.attached? %>
+              <%#= image_tag product.image, class: "product-img" if product.image.attached? %>
               <% if product.order.present? %>
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
@@ -34,6 +34,7 @@
                 </div>
               </div>
             </div>
+          <% end %>
           <% end %>
         </li>
       <% end %>
