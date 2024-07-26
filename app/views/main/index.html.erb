@@ -1,4 +1,12 @@
 <%= render "shared/header" %>
 
-<h1 class="title">Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<div class="main-content">
+  <h1>Welcome to the Main Page</h1>
+  <p>ここにメインページの内容を追加します。</p>
+
+  <div class="portfolio-link">
+    <%= link_to "Click here for the portfolio", portfolio_path, class: "portfolio-btn" %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

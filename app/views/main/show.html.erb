@@ -1,2 +1,20 @@
-ポートフォリオ
-img
+<%= render "shared/header" %>
+
+<div class="portfolio-content">
+  <%= image_tag "portfolio_logo.jpg", class: "portfolio-logo" %>
+
+  <%= image_tag "job_request_btn.jpg", class: "request-job-btn" %>
+
+  <div class="portfolio-images">
+    <div class="image-row">
+      <%= image_tag "portfolio1.jpg", class: "portfolio-image" %>
+      <%= image_tag "portfolio2.jpg", class: "portfolio-image" %>
+    </div>
+    <div class="image-row">
+      <%= image_tag "portfolio3.jpg", class: "portfolio-image" %>
+      <%= image_tag "portfolio4.jpg", class: "portfolio-image" %>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>
