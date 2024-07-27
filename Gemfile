@@ -78,3 +78,6 @@ end
 gem 'devise'
 
 gem 'cancancan', '~> 3.0'
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'

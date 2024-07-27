@@ -1,45 +1,17 @@
 <%= render "shared/header" %>
 
-<div class='title-contents'>
-  <h2 class='service-title'>Online store</h2>
-  <%# ユーザー登録案内とボタン %>
-  <h2 class='form-bottom-text'>
-    ご注文はユーザー登録をお願いします
-  </h2>
-  <div class='register-btn'>
-    <%= link_to "Click here to order and register", new_user_registration_path, class: "register-red-btn" %>
-  </div>
+<h1>Online store</h1>
+<p>ご注文はユーザー登録をお願いします</p>
+<a href="<%= new_user_registration_path %>" class="register-link">Click here to order and register</a>
 
-  <%# 商品一覧 %>
-  <div class='item-contents'>
-    <ul class='item-lists'>
-      <%# 商品データがある場合は、eachメソッドで一覧表示する %>
-      <% @products.each do |product| %>
-        <li class='list'>
-          <%= link_to product_path(product) do %>
-            <div class='product-img-content'>
-              <%#= image_tag product.image, class: "product-img" if product.image.attached? %>
-              <% if product.order.present? %>
-                <div class='sold-out'>
-                  <span>Sold Out!!</span>
-                </div>
-              <% end %>
-            </div>
-            <div class='product-info'>
-              <h3 class='product-name'><%= product.product_name %></h3>
-              <div class='product-price'>
-                <span><%= product.price %>円<br><%= product.shipping_cost.name %></span>
-                <div class='star-btn'>
-                  <%= image_tag "star.png", class: "star-icon" %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<div class="products">
+  <% @products.each do |product| %>
+    <div class="product">
+      <%= image_tag product.image_url, alt: product.name %>
+      <h2><%= product.name %></h2>
+      <p><%= product.price %></p>
+    </div>
+  <% end %>
 </div>
 
 <%= render "shared/footer" %>
