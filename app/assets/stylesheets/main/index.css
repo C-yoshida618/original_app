@@ -1,18 +1,19 @@
-.portfolio-link {
+.link-btn-box {
   text-align: center;
   margin-top: 20px;
+  font-family: "Josefin Sans", sans-serif;
 }
 
-.portfolio-btn {
+.link-btn {
   display: inline-block;
   color: #333333;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 3.2rem;
   position: relative;
   line-height: 1;
 }
 
-.portfolio-btn::after {
+.link-btn::after {
   content: '';
   display: block;
   width: 100%;
@@ -26,9 +27,7 @@
   mix-blend-mode: hue;
 }
 
-.portfolio-btn:hover {
-  background-color: #e63e00;
-}
+
 
 /*intro*/
 /***************************************************

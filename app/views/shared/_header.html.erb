@@ -1,3 +1,12 @@
-<nav id="global-menu">
-  MENU
-  <nav>
+<nav id="global-menu" class="flex">
+  <div class="left-content flex">
+    <div class="menu">Top</div>
+    <div class="menu">Login</div>
+  </div>
+  <div class="center-content">
+    <%= image_tag "cycpp_logo_k.svg", class: "header-logo" %>
+  </div>
+  <div class="right-content">
+    <%= link_to "ONLINE STORE", products_path, class: "online-store-btn" %>
+  </div>
+</nav>

@@ -3,6 +3,8 @@ html,
 body {
   font-size: 62.5%;
   min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -129,5 +131,39 @@ img {
 }
 
 #global-menu {
-  
+  width: 100%;
+  justify-content: space-between;
+  background-color: rgb(252 228 135 / 27%);
+  height: 100px;
+  align-items: center;
+}
+
+#global-menu .center-content{
+  width: 9.8rem;
+}
+
+#global-menu .left-content{
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 15px;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.menu{
+  margin-right: 30px;
+}
+
+#global-menu .right-content{
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 15px;
+  background-color: black;
+  padding: 5px 30px 5px 30px;
+}
+
+
+#global-menu .right-content .online-store-btn{
+  color:white; 
+  text-decoration: none;
+  padding: 5px 30px 5px 50px;
+  margin: 15px;
 }

@@ -1,9 +1,9 @@
 <%= render "shared/header" %>
 
 <div class="portfolio-content">
-  <%= image_tag "portfolio_logo.jpg", class: "portfolio-logo" %>
-
-  <%= image_tag "job_request_btn.jpg", class: "request-job-btn" %>
+  <div class="link-btn-box">
+    <%= link_to "Click here to request a design job", portfolio_path, class: "link-btn" %>
+  </div>
 
   <div class="portfolio-images">
     <div class="image-row">
