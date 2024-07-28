@@ -1,25 +1,45 @@
 <%= render "shared/header" %>
 
-<div class='transaction-contents'>
-  <div class='transaction-main'>
-    <h1 class='transaction-title'>
-      Confirm your Order
-    </h1>
-    <h2 class='transaction-title-text'>
-      購入内容の確認
-    </h2>
-    <h3 class='transaction-title-text2'>
-      ※ご注文の確定は画面下のOrderボタンをクリックしてください
-    </h3>
+<h1>Confirm your Order</h1>
+<p>購入内容の確認</p>
+<p>※ご注文の確認は画面下の Order ボタンをクリックしてください</p>
 
-    <%# 購入内容の表示 %>
-    
-    <%# /購入内容の表示 %>
-
-    <%# 支払額の表示 %>
-    
-    <%# /支払額の表示 %>
+<div class="product-confirmation">
+  <div class="product-image">
+    <%#= image_tag @product.image %>
+  </div>
+  <div class="product-details">
+    <h2><%= @product.product_name %></h2>
+    <p>¥<%= @product.price %>(※送料別)</p>
+    <p>送料　※———円</p>
+    <p>お支払い金額</p>
+    <p>¥———</p>
   </div>
 </div>
 
+<h2>クレジットカード情報入力</h2>
+<div class="credit-card-form">
+  <%= form_with url: new_product_order_path(@product), method: :post do |f| %>
+    <div class="field">
+      <%= f.label :card_number, "カード番号", class: "required" %>
+      <%= f.text_field :card_number, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :expiration_date, "有効期限", class: "required" %>
+      <%= f.text_field :expiration_date, required: true, placeholder: "月 / 年" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :security_code, "セキュリティコード", class: "required" %>
+      <%= f.text_field :security_code, required: true, placeholder: "CVC" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Order", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
 <%= render "shared/footer" %>
+

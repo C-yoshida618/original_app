@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   get 'products', to: 'products#index' # オンラインページ
   get 'products/new', to: 'products#new' # 出品ページ
 
-  resources :products do 
-    resources :orders, only: [:new, :create]
+  get 'orders', to: 'orders#index'
+  get 'orders/new', to: 'orders#new'
+
+  resources :products do
+    resources :orders, only: [:new, :create, :index]
   end
 
   resources :users do
@@ -18,4 +21,4 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:show, :edit, :update, :destroy]
-end
+  end

@@ -2,12 +2,12 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one :order
 
-  has_one_attached :image
+  has_one_attached :image_url
 
   belongs_to :shipping_cost
 
   with_options presence: true do
-    validates :image
+    validates :image_url
     validates :product_name, length: { maximum: 40 }
     validates :description, length: { maximum: 1000 }, unless: :was_attached?
 
@@ -17,6 +17,10 @@ class Product < ApplicationRecord
 
     def was_attached?
       self.image.attached?
+    end
+
+    def add_tax_sales_price
+      (self.sales_price * 1.10).round
     end
   end
 end

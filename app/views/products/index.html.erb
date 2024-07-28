@@ -7,9 +7,18 @@
 <div class="products">
   <% @products.each do |product| %>
     <div class="product">
-    <%= image_tag product.image.variant(resize: '500x500'), class: 'product-image' if product.image.attached? %>
-      <h2><%= product.name %></h2>
-      <p><%= product.price %></p>
+      <% if product.image_url.attached? %>
+        <%= image_tag product.image_url, size: "320x480" %>
+      <% else %>
+        <%= image_tag "product1.jpg" , size: "320x480"%>
+      <% end %>
+      <h2><%= product.product_name %></h2>
+      <h3><%= product.description %></h3>
+      <p>¥<%= product.price %>(※送料別)</p>
+    
+        <div class="buy_btn">
+            <%= link_to 'BUY', new_product_order_path(product.id) %>
+        </div>
     </div>
   <% end %>
 </div>

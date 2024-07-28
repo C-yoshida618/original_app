@@ -2,8 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    # 注文の一覧を取得する
-    @orders = Order.all
+    @order = Order.new
     @product = Product.all
   end
 
@@ -14,6 +13,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @product = Product.find(params[:product_id])
   end
 
   def create
