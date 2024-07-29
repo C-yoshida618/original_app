@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @order = Order.new
-    @product = Product.all
+    @product = Product.find(params[:product_id])
   end
 
   def show
@@ -17,9 +17,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @product = Product.find(params[:product_id])
+    @order = @product.orders.build(order_params)
+    @order.user = current_user
+
     if @order.save
-      redirect_to @order, notice: 'Order was successfully created.'
+      redirect_to products_path, notice: 'Order was successfully created.'
     else
       render :new
     end
@@ -47,6 +50,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :product_id, :shipping_cost)
+    params.require(:order).permit(:card_number, :expiration_date, :security_code, :postal_code, :prefecture_id, :city, :block, :building, :phone_number)
   end
 end

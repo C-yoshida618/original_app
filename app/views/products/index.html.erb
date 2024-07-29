@@ -1,26 +1,35 @@
 <%= render "shared/header" %>
-
-<h1>Online store</h1>
-<p>ご注文はユーザー登録をお願いします</p>
-<a href="<%= new_user_registration_path %>" class="register-link">Click here to order and register</a>
-
-<div class="products">
-  <% @products.each do |product| %>
-    <div class="product">
-      <% if product.image_url.attached? %>
-        <%= image_tag product.image_url, size: "320x480" %>
-      <% else %>
-        <%= image_tag "product1.jpg" , size: "320x480"%>
-      <% end %>
-      <h2><%= product.product_name %></h2>
-      <h3><%= product.description %></h3>
-      <p>¥<%= product.price %>(※送料別)</p>
-    
-        <div class="buy_btn">
-            <%= link_to 'BUY', new_product_order_path(product.id) %>
-        </div>
+<main id="products">
+  <h1>Online store</h1>
+    <% unless user_signed_in? %>
+    <p>ご注文はユーザー登録をお願いします</p>
+    <div class="link-btn-box">
+      <%= link_to "Click here to order and register", new_user_registration_path, class: "link-btn" %>
     </div>
-  <% end %>
-</div>
+    <% end %>
+    
+  <div class="products">
+    <% @products.each do |product| %>
+      <div class="product">
+        <% if product.image_url.attached? %>
+          <%= image_tag product.image_url, width: "200px" %>
+        <% else %>
+          <%= image_tag "product1.jpg",  width: "200px" %>
+        <% end %>
 
+        <%# 商品が売れている場合は、sold out %>
+        <% if product.order.present? %>
+          <div class="sold-out">
+            <span>Sold Out!!</span>
+          </div>
+        <% end %>
+        
+        <h2><%= product.product_name %></h2>
+        <h3><%= product.description %></h3>
+        <p>¥<%= product.price %>(※送料別)</p>
+        <%= link_to 'BUY', product_orders_path(product.id), class: "item-red-btn" %>
+      </div>
+    <% end %>
+  </div>
+</main>
 <%= render "shared/footer" %>

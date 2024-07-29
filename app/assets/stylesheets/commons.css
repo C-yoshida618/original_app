@@ -157,13 +157,13 @@ img {
   font-family: "Josefin Sans", sans-serif;
   font-size: 15px;
   background-color: black;
-  padding: 5px 30px 5px 30px;
+  padding: 5px 5px 5px 30px;
 }
 
 
 #global-menu .right-content .online-store-btn{
   color:white; 
   text-decoration: none;
-  padding: 5px 30px 5px 50px;
+  padding: 5px 15px 5px 30px;
   margin: 15px;
 }

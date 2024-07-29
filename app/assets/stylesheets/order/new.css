@@ -1,7 +1,14 @@
 .product-confirmation {
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
+  align-items: center;
+  /* margin-bottom: 20px; */
+  margin: 100px 0;
+}
+
+.product {
+padding: 10px;
+width: 50%;
 }
 
 .product-image {
@@ -10,7 +17,9 @@
 
 .product-details {
   flex: 1;
-  padding-left: 20px;
+  padding-left: 50px;
+  width: 50%;
+  text-align: left;
 }
 
 .credit-card-form {

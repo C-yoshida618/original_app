@@ -1,1 +1,7 @@
-オーダー完了
+<%= render "shared/header" %>
+<main>
+  <h1>Order Complete</h1>
+  <p>Your order has been successfully placed!</p>
+  <%= link_to 'Back to Store', products_path, class: 'btn btn-primary' %>
+</main>
+<%= render "shared/footer" %>
