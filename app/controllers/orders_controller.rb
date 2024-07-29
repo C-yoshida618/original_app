@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @order = @product.orders.build(order_params)
+    @order = @product.order.build(order_params)
     @order.user = current_user
 
     if @order.save
