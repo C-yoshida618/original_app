@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @shipping_cost = @product.shipping_cost
   end
 
   def new
@@ -46,6 +47,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :description, :price, :image_url)
+    params.require(:product).permit(:product_name, :description, :price, 
+     :shipping_cost_id, :image_url)
   end
 end

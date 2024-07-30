@@ -16,10 +16,16 @@
   </div>
 
   <div class="product-details">
-    <h2><%= @product.product_name %></h2>
     <div class='buy-product-price'>
       <p class='product-price-text'>¥<%= @product.price %></p>
-      <p class='product-price-sub-text'><%= @product.shipping_cost %></p>
+      <p class='product-price-sub-text'>
+      <% if @order.shipping_cost.present? %>
+      送料: ¥<%= @order.shipping_cost.cost %>
+      <% else %>
+      送料: 情報なし
+      <% end %>
+      </p>
+    </div>
     </div>
   </div>
 </div>

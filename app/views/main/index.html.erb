@@ -1,5 +1,5 @@
 <%= render "shared/header" %>
-<main>
+
 <div class="wrapper">
 <article>
 
@@ -23,14 +23,15 @@
 </svg>
 </section>
 
-<div class="main-content">
-  <h1>Welcome to the Main Page</h1>
-  <p>ここにメインページの内容を追加します。</p>
-
+<div class="top-content">
+    <div class="top-images">
+    <div class="top-row">
+      <%= image_tag "top.jpg", class: "top-image" %>
+</div>
   <div class="link-btn-box">
     <%= link_to "Click here for the portfolio", portfolio_path, class: "link-btn" %>
   </div>
-</div>
+
 
 </article>
 </div>

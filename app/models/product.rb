@@ -1,10 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :user
   has_one :order
-
   has_one_attached :image_url
 
-  belongs_to :shipping_cost
 
   with_options presence: true do
     validates :image_url

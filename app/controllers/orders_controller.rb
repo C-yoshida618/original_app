@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @order = Order.new
-    @product = Product.find(params[:product_id])
+    @order = Order.find(params[:product_id]) # 例: IDに基づいて特定の注文を取得
+    @product = @order.product
   end
 
   def show
@@ -50,6 +50,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:card_number, :expiration_date, :security_code, :postal_code, :prefecture_id, :city, :block, :building, :phone_number)
+    @order = Order.new
+    params.require(:order).permit(:product_id, :card_number, :expiration_date, :security_code, :postal_code, :prefecture_id, :city, :block, :building, :phone_number)
   end
 end
