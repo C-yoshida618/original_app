@@ -3,6 +3,10 @@
   margin: 0 calc(50% - 50vw);
 }
 
+#logo_anime_box {
+  margin-top: -405px;
+}
+
 .link-btn-box {
   text-align: center;
   margin-top: 20px;
