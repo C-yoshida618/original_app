@@ -1,5 +1,5 @@
 <%= render "shared/header" %>
-
+<main id="topPage">
 <div class="wrapper">
 <article>
 
@@ -69,11 +69,68 @@
 </svg>
   </div>
   <!--ここまで-->
-  <div class="link-btn-box">
-    <%= link_to "Click here for the portfolio", portfolio_path, class: "link-btn" %>
+  <!--About-->
+  <div class="aboutgraphic-box">
+    <div class="aboutgraphic-images">
+      <%= image_tag "aboutgraphic.svg", class: "aboutgraphic-image" %>
+      </div>
+    <div class="about-box">
+      <p class="about-title">About</p>
+      <p>私たちは会社の理念やデザインコンセプトに沿って<br>
+      求められるプロダクトやデザインをご提案します<br></p>
+                            
+      <p>アイデアミーティングやマーケットリサーチを重ね<br>
+      一つのWebsiteやApparel productsを作り上げます<br></p>
+
+      <p>Apparel Portfolioやお仕事依頼についてはContactへ</p>
+    </div>
   </div>
+  <!--ボタン-->
+    <div class="link-btn-box">
+      <%= link_to "Click here for the portfolio", portfolio_path, class: "link-btn" %>
+    </div>
+  <!--Info-->
+  <div class="infomation-box">
+    <div class="info-box">
+        <p class="info-title">Info</p>
+        <p class="info-text">2024.08.08   Info title<br>
+          テキストテキストテキストテキストテキストテキスト<br></p>
+                            
+        <p class="info-news">2024.08.09   卒業します！！<br>
+                  みなさん、ありがとうございました！！吉田<br></p>
+    </div>
+      <div class="infomation-images">
+      <%= image_tag "infomation.jpg", class: "infomation-image" %>
+    </div>
+  </div>
+  <!--Ceramic Products-->
+    <div class="ceramic-products-box">
+      <div class="ceramic-top-images">
+        <%= image_tag "ceramic-top.jpg", class: "ceramic-top-image" %>
+      </div>
+      <div class="ceramic-box">
+        <p class="ceramic-title">Products</p>
+        <p>私たちの展開するプロダクトCeramic productラインは<br>
+        ひとつひとつ形成からHandmadeで作られています<br></p>
+                            
+        <p>オンラインストアでご購入可能です<br>
+        <br>
+        <br>
+        <br>
+          <!--オンラインストアへのリンクボタン-->
+          <div class="link-btn-box">
+            <%= link_to "Click here online store for ceramic products", products_path, class: "link-btn" %>
+          </div>
+      </div>
+    </div>
 
-
+  <!--CONTACTへのリンクボタン-->
+    <div class="contact-box">
+      <p class="contact-title">Contact</p>  
+      <p class="contact-text">お問い合わせはこちらから</p>
+        <%= link_to "Contact", "#", class: "contact-link" %>
+    </div>
+    
 </article>
 </div>
 </main>
