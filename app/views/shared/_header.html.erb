@@ -1,7 +1,9 @@
 <nav id="global-menu" class="flex">
   <div class="left-content flex">
-    <div class="menu">Top</div>
-    <div class="menu">Login</div>
+      <%# TOPページへのリンク %>
+      <%= link_to "Top", root_path, class: "header-menu" %>  
+      <%# Loginページへのリンク %>
+      <%= link_to "Login", new_user_session_path, class: "header-menu" %>
   </div>
   <div class="center-content">
     <%= image_tag "cycpp_logo_k.svg", class: "header-logo" %>

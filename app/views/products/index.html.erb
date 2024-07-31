@@ -2,7 +2,7 @@
 <main id="products">
   <h1>Online store</h1>
     <% unless user_signed_in? %>
-    <p>ご注文はユーザー登録をお願いします</p>
+    <p class="products-text">ご注文はユーザー登録をお願いします</p>
     <div class="link-btn-box">
       <%= link_to "Click here to order and register", new_user_registration_path, class: "link-btn" %>
     </div>
@@ -24,10 +24,11 @@
           </div>
         <% end %>
         
-        <h2><%= product.product_name %></h2>
-        <h3><%= product.description %></h3>
-        <p>¥<%= product.price %>(※送料別)</p>
-        <%= link_to 'BUY', product_orders_path(product.id), class: "item-red-btn" %>
+        <div class="product-name"><%= product.product_name %></div>
+        <div class="product-description"><%= product.description %></div>
+        <div class="product-price">¥<%= product.price %>(※送料別)</div>
+        <br>
+        <%= link_to 'BUY', product_orders_path(product.id), class: "link-btn small" %>
       </div>
     <% end %>
   </div>

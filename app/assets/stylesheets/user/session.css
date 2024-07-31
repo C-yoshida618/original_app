@@ -1,0 +1,36 @@
+/* 既存のCSSに追加 */
+
+.session-form {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.session-form .field {
+  margin-bottom: 15px;
+}
+
+.session-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.session-form input[type="email"],
+.session-form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.session-form .actions {
+  text-align: center;
+}
+
+.link-btn-box {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Josefin Sans", sans-serif;
+}

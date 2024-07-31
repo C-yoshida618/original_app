@@ -1,14 +1,17 @@
 <%= render "shared/header" %>
 
-<main>
+<main id="portfolio">
   <h1>Portfolio</h1>
-  <p>お仕事依頼やお問い合わせはこちらから</p>
-
-<div class="portfolio-content">
+  <p class="portfolio-text">お仕事依頼やお問い合わせはこちらから↓</p>
+    <!--CONTACTへのリンクボタン-->
+      <br>
+      <br>
   <div class="link-btn-box">
-    <%= link_to "Click here to request a design job", portfolio_path, class: "link-btn" %>
+    <%= link_to "Click here to request a design job", "mailto:kana.yoshida@nawgraph.com", class: "link-btn" %>
   </div>
-
+      <br>
+      <br>
+      <br>
   <div class="portfolio-images">
     <div class="image-row">
       <%= image_tag "portfolio1.jpg", class: "portfolio-image" %>

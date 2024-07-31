@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   end
 
   get 'orders#new', to: 'orders#new', as: 'order_complete'
+
+  resources :shipping_costs, only: [:index]
 end
