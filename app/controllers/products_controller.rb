@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @product = Product.all
+    @products = Product.includes(:user).order('created_at DESC')
   end
 
   def show

@@ -2,8 +2,12 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @order = Order.find(params[:id ]) # 例: IDに基づいて特定の注文を取得
-    @product = @order.product
+    # 商品IDを使って商品情報を取得
+    @product = Product.find(params[:product_id])
+    # 新しい注文オブジェクトを作成
+    @orders = Order.new
+    # 必要な処理を行った後にリダイレクトする
+    redirect_to root_path if @product.save
   end
 
   def show
