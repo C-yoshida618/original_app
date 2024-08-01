@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @order = Order.find(params[:product_id]) # 例: IDに基づいて特定の注文を取得
+    @order = Order.find(params[:id ]) # 例: IDに基づいて特定の注文を取得
     @product = @order.product
   end
 

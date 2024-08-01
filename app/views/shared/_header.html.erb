@@ -1,7 +1,7 @@
 <nav id="global-menu" class="flex">
   <div class="left-content flex">
       <%# TOPページへのリンク %>
-      <%= link_to "Top", root_path, class: "header-menu" %>  
+      <%= link_to "Top", root_path, data: { turbo: false }, class: "header-menu" %>  
       <%# Loginページへのリンク %>
       <%= link_to "Login", new_user_session_path, class: "header-menu" %>
   </div>

@@ -1,3 +1,5 @@
+window.addEventListener("turbo:load", function() {
+
 var introTl = anime.timeline({
   easing: 'easeOutQuart',
   loop: false,
@@ -199,3 +201,5 @@ logoAnimP2
   targets: '#p2-2',
   fill: '#58f195',
 }, '-=600');
+
+});

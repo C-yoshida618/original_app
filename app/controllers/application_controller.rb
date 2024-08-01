@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  protected
 
-  private
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :name_kana])
+  def after_sign_in_path_for(resource)
+    product_id = session[:desired_product_id] # 例えばセッションから取得
+    if product_id
+      new_product_order_path(product_id: product_id)
+    else
+      products_path # デフォルトのリダイレクト先
+    end
   end
 end
