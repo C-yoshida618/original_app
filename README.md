@@ -22,7 +22,6 @@ about/info/products/online_store/contact
 - has_many :products
 - has_many :orders
 
-## items テーブル
 
 ## products テーブル
 

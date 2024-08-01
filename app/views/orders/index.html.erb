@@ -1,3 +1,4 @@
+<%= include_gon %>
 <%= render "shared/header" %>
 
 <main id="order">
@@ -109,10 +110,14 @@
         <span><span id='total-price'></span></span> <!-- 合計金額をここに表示 -->
       </div>
       <%# /支払額の表示 %>
+      
+      <%= form_with(model: @OrdersAddresses, url: product_orders_path, id: 'charge-form', class: 'card-form-wrap', local: true) do |f| %>
+      <%= render 'shared/error_messages', model: @OrdersAddresses %>
+
       <%# /購入ボタン表示%>
 
         <%= f.submit "BUY NOW", class:"link-btn small", id:"link-btn" %>
-  
+     <% end %>
     <% end %>
   </div>
 </main>

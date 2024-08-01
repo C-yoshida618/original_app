@@ -9,3 +9,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "product_price", to: "product_price.js"
 
 pin_all_from  "app/javascript/custom", under: "custom"
+pin "card", to: "card.js"

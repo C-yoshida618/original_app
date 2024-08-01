@@ -3,7 +3,7 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 import "product_price"
-
+import "card"
 import "./custom/kanamakihira_app_fnc"
 
 document.addEventListener("DOMContentLoaded", function() {
