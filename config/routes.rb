@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index]
   end
 
-  get 'orders#new', to: 'orders#new', as: 'order_complete'
-
-  resources :shipping_costs, only: [:index]
+  # 注文完了ページ
+  get 'order_complete', to: 'orders#complete'
 end

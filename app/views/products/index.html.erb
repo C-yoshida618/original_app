@@ -18,7 +18,7 @@
         <% end %>
 
         <%# 商品が売れている場合は、sold out %>
-        <% if product.order.present? %>
+        <% if @product.present? %>
           <div class="sold-out">
             <span>Sold Out!!</span>
           </div>

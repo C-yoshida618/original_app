@@ -1,8 +1,13 @@
+
+
+
+
+/*
 .product-confirmation {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* margin-bottom: 20px; */
+  margin-bottom: 20px; 
   margin: 100px 0;
 }
 
@@ -49,3 +54,4 @@ width: 50%;
   cursor: pointer;
   border-radius: 4px;
 }
+*/

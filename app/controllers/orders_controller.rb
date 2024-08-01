@@ -20,14 +20,19 @@ class OrdersController < ApplicationController
     @product = Product.find(params[:product_id])
   end
 
+  def complete
+    # 注文完了ページの処理（注文情報などを表示）
+  end
+
   def create
     @product = Product.find(params[:product_id])
-    @order = @product.order.build(order_params)
+    @order = @product.orders.build(order_params)
     @order.user = current_user
-
+  
     if @order.save
-      redirect_to products_path, notice: 'Order was successfully created.'
+      redirect_to order_complete_path, notice: 'Order was successfully created.'
     else
+      puts @order.errors.full_messages
       render :new
     end
   end
