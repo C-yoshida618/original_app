@@ -1,6 +1,6 @@
-class OrdersAddresses
+class OrderAddress
   include ActiveModel::Model
-  attr_accessor :price, :token, :product_id, :user_id, :postal_code, :prefecture_id, :city, :block, :building_name, :phone_number
+  attr_accessor  :token, :product_id, :user_id, :postal_code, :prefecture_id, :city, :block, :building_name, :phone_number 
 
   validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
 
@@ -13,8 +13,6 @@ class OrdersAddresses
     validates :block
     validates :token
   end
-  # 建物名は任意
-  validates :building_name, absence: false
 
   def save
     order = Order.create(user_id: user_id, product_id: product_id)

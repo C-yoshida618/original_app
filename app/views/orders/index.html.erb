@@ -69,7 +69,7 @@
     <%# 配送先の入力 %>
     <div class='shipping-address-form'>
       <p class='info-input-headline'>配送先入力</p>
-      <%= form_with(model: @OrdersAddresses, url: product_orders_path, id: 'charge-form', class: 'card-form-wrap', local: true) do |f| %>
+      <%= form_with(model: @order_address, url: product_orders_path, id: 'charge-form', class: 'card-form-wrap', local: true) do |f| %>
         <div class="form-group">
           <div class='form-text-wrap'>
             <label class="form-text">郵便番号</label>
@@ -103,7 +103,7 @@
             <label class="form-text">建物名</label>
             <span class="form-any">任意</span>
           </div>
-          <%= f.text_field :building, class: "input-default", id: "building", placeholder: "例）青ビル103" %>
+          <%= f.text_field :building_name, class: "input-default", id: "building_name", placeholder: "例）青ビル103" %>
         </div>
         <div class="form-group">
           <div class='form-text-wrap'>
@@ -112,7 +112,7 @@
           </div>
           <%= f.text_field :phone_number, class: "input-default", id: "phone_number", placeholder: "例）09012345678", maxlength: "11" %>
         </div>
-        <%= render 'shared/error_messages', model: @OrdersAddresses %>
+        <%= render 'shared/error_messages', model: @order_address %>
         <%= f.submit "BUY NOW", class: "link-btn small", id: "link-btn" %>
       <% end %>
     </div>

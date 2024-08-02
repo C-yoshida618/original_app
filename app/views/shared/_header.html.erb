@@ -1,7 +1,6 @@
 <nav id="global-menu" class="flex">
   <div class="left-content flex">
-    <%# TOPページへのリンク %>
-    <%= link_to "Top", root_path, data: { turbo: false }, class: "header-menu" %>
+
     <%# Loginページへのリンク %>
     <%= link_to "Login", new_user_session_path, data: { turbo: false }, class: "header-menu" %>
     <%# Logoutページへのリンク %>
@@ -9,10 +8,12 @@
     <%= form_with url: destroy_user_session_path, method: :delete, id: "logout-form", style: "display: none;" do %>
     <% end %>
   </div>
+  <%# TOPページへのリンク %>
   <div class="center-content">
-    <%= image_tag "cycpp_logo_k.svg", class: "header-logo" %>
+        <%= link_to image_tag("cycpp_logo_k.svg"), root_path, data: { turbo: false }, class: "header-logo" %>
   </div>
   <div class="right-content">
     <%= link_to "ONLINE STORE", products_path, class: "online-store-btn" %>
   </div>
 </nav>
+

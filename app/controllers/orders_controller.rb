@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @product = Product.find(params[:product_id])
-    @OrdersAddresses = OrdersAddresses.new
+    @order_address = OrderAddress.new
     # 必要な処理を行った後にリダイレクトする
     
   end
@@ -16,27 +16,29 @@ class OrdersController < ApplicationController
     @product = @order.product
   end
 
-  def new
-    @order = Order.new
-    @product = Product.find(params[:product_id])
-  end
-
   def create
-    @OrdersAddresses = OrdersAddresses.new(order_params)
-    if @OrdersAddresses.valid?
+    @order_address = OrderAddress.new(order_params)
+    
+    if @order_address.valid?
       pay_item
-      redirect_to product_orders_path if @OrdersAddresses.save
-    else
-      render :index, status: :unprocessable_entity
+      @order_address.save
+        # Assuming you have an order object saved somewhere in the process
+        @order = @product.order # This assumes the last order is the one just created
+        redirect_to product_order_path(@product, @order)
+      else
+        render :index, status: :unprocessable_entity
+      end
+    
     end
 
-  end
+  
+
 
   private
 
   def order_params
-    params.require(:orders_addresses).permit(:postal_code, :prefecture_id, :city, :block, :building_name, :phone_number).merge(
-      user_id: current_user.id, product_id: params[:product_id], token: params[:token], price: params[:price]
+    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :block, :building_name, :phone_number).merge(
+      user_id: current_user.id, product_id: params[:product_id], token: params[:token]
     )
   end
 
