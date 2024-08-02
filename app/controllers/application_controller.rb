@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
   protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :name_kana])
+  end
 
   def after_sign_in_path_for(resource)
     product_id = session[:desired_product_id] # 例えばセッションから取得
@@ -8,5 +14,9 @@ class ApplicationController < ActionController::Base
     else
       products_path # デフォルトのリダイレクト先
     end
+  end
+
+  def after_sign_up_path_for(resource)
+    products_path # 登録後のデフォルトのリダイレクト先
   end
 end

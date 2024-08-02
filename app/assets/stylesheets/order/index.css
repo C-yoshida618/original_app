@@ -12,6 +12,7 @@ h1 {
 
 #order p{
   font-size: 15px;
+  font-weight: 700;
 }
 
 .order-product-box {
@@ -73,43 +74,50 @@ h1 {
   margin:150px 150px 30px 50px;
 }
 
+/* カード情報の入力 */
 .credit-card-form {
-  width: 400px;
-  margin: 0 auto;
-  padding: 20px;
+  border-bottom: 2px solid #f5f5f5;
+  margin-top: 15px;
+  padding-bottom: 30px;
 }
 
-.credit-card-form .field,
-.credit-card-form .form-group{
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.credit-card-form label,
-.credit-card-form .form-text-wrap{
-  display: block;
-  margin-bottom: 5px;
+.info-input-haedline {
+  text-align: center;
   font-weight: bold;
-  width: 40%;
+  font-size: 20px;
 }
 
-.credit-card-form .form-text-wrap{
+.available-card {
   display: flex;
-  justify-content: center;
-}
-.credit-card-form .form-text-wrap .indispensable{
-  color: red;
-  margin-left: 5px;
+  height: 35px;
 }
 
-.credit-card-form input {
-  width: 60%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+.card-logo {
+  width: 40px;
+  margin: 5px 5px;
 }
+
+.input-expiration-date-wrap {
+  width: 30%;
+  text-align: center;
+  line-height: 55px;
+  border: 1px solid;
+}
+
+.input-expiration-date {
+  width: 20%;
+  margin-top: 5px;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+  line-height: 45px;
+  text-align: center;
+}
+
+/* /カード情報の入力 */
 
 input[type=submit].link-btn{
 border:none;

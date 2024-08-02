@@ -17,8 +17,9 @@ class OrdersAddresses
   validates :building_name, absence: false
 
   def save
-    order = Order.create(user_id:, product_id:)
-    Address.create(postal_code:, prefecture_id:, city:, block:, building_name:,
-                     phone_number:, order_id: order.id)
+    order = Order.create(user_id: user_id, product_id: product_id)
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, block: block, building_name: building_name,
+                   phone_number: phone_number, order_id: order.id)
   end
+  
 end

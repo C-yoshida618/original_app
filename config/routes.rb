@@ -7,9 +7,6 @@ Rails.application.routes.draw do
   get 'main/show', to: 'main#show', as: 'portfolio' # ポートフォリオページ
 
   resources :products do
-    resources :orders, only: [:new, :create, :index]
+    resources :orders, only: [:index, :create, :show]
   end
-
-  # 注文完了ページ
-  get 'order_complete', to: 'orders#complete'
 end

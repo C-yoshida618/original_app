@@ -1,152 +1,156 @@
 <%= include_gon %>
 <%= render "shared/header" %>
-
 <main id="order">
   <h1>Confirm your Order</h1>
-  <p>購入内容の確認</p>
-  <p>※ご注文の確認は画面下の Order ボタンをクリックしてください</p>
-
-  <%# 購入内容の表示 %>
-  <div class="product-confirmation">
-    <div class="product order">
-      <% if @product.image_url.attached? %>
-        <%= image_tag @product.image_url %>
-      <% else %>
-        <%= image_tag "product1.jpg" %>
+  <div class="inner">
+    <% if user_signed_in? %>
+      <div class="greeting">
+        HELLO!
+        <%= link_to "#{current_user.name}さん", user_session_path(current_user.id) %>
+      </div>
+    <% end %>
+    <p>◼︎購入内容の確認◼︎</p>
+    <p>※ご注文の確認は画面下の Order ボタンをクリックしてください</p>
+    <%# 購入内容の表示 %>
+    <div class="product-confirmation">
+      <div class="product order">
+        <% if @product.image_url.attached? %>
+          <%= image_tag @product.image_url %>
+        <% else %>
+          <%= image_tag "product1.jpg" %>
+        <% end %>
+      </div>
+      <div class="order-product-box">
+        <div class="order-product-name"><%= @product.product_name %></div>
+        <div class="order-product-description"><%= @product.description %></div>
+        <div class="order-product-price">¥<span id="product-price"><%= @product.price %></span></div>
+        <p>※配送方法と送料について</p>
+        通常商品は宅配便にてお届け致します。
+        <br>
+        送料は一律800円(北海道・沖縄を除く／北海道・沖縄:1,500円)です。
+      </div>
+    </div>
+    <%# カード情報の入力 %>
+    <div class='credit-card-form'>
+      <h1 class='info-input-headline'>
+        クレジットカード情報入力
+      </h1>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">カード情報</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <div id="number-form" class="input-default"></div>
+        <div class='available-card'>
+          <%= image_tag 'card-visa.gif', class: 'card-logo' %>
+          <%= image_tag 'card-mastercard.gif', class: 'card-logo' %>
+          <%= image_tag 'card-jcb.gif', class: 'card-logo' %>
+          <%= image_tag 'card-amex.gif', class: 'card-logo' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">有効期限</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <div class='input-expiration-date-wrap'>
+          <div id="expiry-form" class="input-default"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">セキュリティコード</label>
+          <span class="indispensable">必須</span>
+        </div>
+        <div id="cvc-form" class="input-default"></div>
+      </div>
+    </div>
+    <%# /カード情報の入力 %>
+    <%# 配送先の入力 %>
+    <div class='shipping-address-form'>
+      <p class='info-input-headline'>配送先入力</p>
+      <%= form_with(model: @OrdersAddresses, url: product_orders_path, id: 'charge-form', class: 'card-form-wrap', local: true) do |f| %>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">郵便番号</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_field :postal_code, class: "input-default", id: "postal-code", placeholder: "例）123-4567", maxlength: "8" %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">都道府県</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, { class: "select-box", id: "prefecture_id" }) %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">市区町村</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_field :city, class: "input-default", id: "city", placeholder: "例）渋谷区" %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">番地</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_field :block, class: "input-default", id: "addresses", placeholder: "例）神宮前1-1-1" %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">建物名</label>
+            <span class="form-any">任意</span>
+          </div>
+          <%= f.text_field :building, class: "input-default", id: "building", placeholder: "例）青ビル103" %>
+        </div>
+        <div class="form-group">
+          <div class='form-text-wrap'>
+            <label class="form-text">電話番号</label>
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_field :phone_number, class: "input-default", id: "phone_number", placeholder: "例）09012345678", maxlength: "11" %>
+        </div>
+        <%= render 'shared/error_messages', model: @OrdersAddresses %>
+        <%= f.submit "BUY NOW", class: "link-btn small", id: "link-btn" %>
       <% end %>
     </div>
-    
-    <div class="order-product-box">
-      <div class="order-product-name"><%= @product.product_name %></div>
-      <div class="order-product-description"><%= @product.description %></div>
-      <div class="order-product-price">¥<span id="product-price"><%= @product.price %></span></div>
-      <p>※配送方法と送料について</p>
-      通常商品は宅配便にてお届け致します。
-      <br>
-      送料は一律800円(北海道・沖縄を除く／北海道・沖縄:1,500円)です。
+    <%# /配送先の入力 %>
+    <%# 支払額の表示 %>
+    <div class="price-content">
+      <div class="price-text"><span>本体価格(税込) ¥<%= @product.price %></span></div>
     </div>
-  </div>
-
-  <h2>クレジットカード情報入力</h2>
-  <div class="credit-card-form">
-    <%= form_with url: product_orders_path(@product), method: :post do |f| %>
-      <div class="field">
-        <%= f.label :card_number, "カード番号", class: "required" %>
-        <%= f.text_field :card_number, required: true %>
-      </div>
-      <div class="field">
-        <%= f.label :expiration_date, "有効期限", class: "required" %>
-        <%= f.text_field :expiration_date, required: true, placeholder: "月 / 年" %>
-      </div>
-      <div class="field">
-        <%= f.label :security_code, "セキュリティコード", class: "required" %>
-        <%= f.text_field :security_code, required: true, placeholder: "CVC" %>
-      </div>
-
-<%# 配送先の入力 %>
-<div class='shipping-address-form'>
-  <p class='info-input-headline'>配送先入力</p>
-  
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">郵便番号</label>
-      <span class="indispensable">必須</span>
+    <div class="price-content">
+      <span>配送料</span>
+      <p id="shipping-cost"></p> <!-- 配送料をここに表示 -->
     </div>
-    <%= f.text_field :postal_code, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">都道府県</label>
-      <span class="indispensable">必須</span>
+    <div class="price-content">
+      <span>合計お支払い金額</span>
+      <span><span id='total-price'></span></span> <!-- 合計金額をここに表示 -->
     </div>
-    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture_id"}) %>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">市区町村</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :city, class:"input-default", id:"city", placeholder:"例）渋谷区" %>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">番地</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :block, class:"input-default", id:"addresses", placeholder:"例）神宮前1-1-1" %>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">建物名</label>
-      <span class="form-any">任意</span>
-    </div>
-    <%= f.text_field :building, class:"input-default", id:"building", placeholder:"例）青ビル103" %>
-  </div>
-
-  <div class="form-group">
-    <div class='form-text-wrap'>
-      <label class="form-text">電話番号</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :phone_number, class:"input-default", id:"phone_number", placeholder:"例）09012345678", maxlength:"11" %>
-  </div>
-</div>
-<%# /配送先の入力 %>
-      
-      <%# 支払額の表示 %>
-      <div class="price-content">
-        <div class="price-text"><span>本体価格(税込)  ¥<%= @product.price %></span></div>
-      </div>
-      <div class="price-content">
-        <span>配送料</span>
-        <p id="shipping-cost"></p> <!-- 配送料をここに表示 -->
-      </div>
-      <div class="price-content">
-        <span>合計お支払い金額</span>
-        <span><span id='total-price'></span></span> <!-- 合計金額をここに表示 -->
-      </div>
-      <%# /支払額の表示 %>
-      
-      <%= form_with(model: @OrdersAddresses, url: product_orders_path, id: 'charge-form', class: 'card-form-wrap', local: true) do |f| %>
-      <%= render 'shared/error_messages', model: @OrdersAddresses %>
-
-      <%# /購入ボタン表示%>
-
-        <%= f.submit "BUY NOW", class:"link-btn small", id:"link-btn" %>
-     <% end %>
-    <% end %>
+    <%# /支払額の表示 %>
   </div>
 </main>
-
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var prefectureSelect = document.getElementById('prefecture_id');
-    var shippingCostDisplay = document.getElementById('shipping-cost');
-    var totalPriceDisplay = document.getElementById('total-price');
-    var productPrice = parseInt(document.getElementById('product-price').textContent.replace('¥', '').replace(',', '')) || 0;
-
-    prefectureSelect.addEventListener('change', updateShippingAndTotal);
-
-    // 初期状態を設定
-    updateShippingAndTotal();
-
-    function updateShippingAndTotal() {
-      var selectedOption = prefectureSelect.options[prefectureSelect.selectedIndex];
-      var selectedPrefecture = selectedOption ? selectedOption.text : '';
-
-      // 配送料の計算
-      var shippingCost = (['北海道', '沖縄県'].includes(selectedPrefecture)) ? 1500 : 800;
-      shippingCostDisplay.innerText = shippingCost + '円';
-
-      // 合計金額の計算
-      var totalPrice = productPrice + shippingCost;
-      totalPriceDisplay.innerText = totalPrice + '円';
-    }
-  });
+document.addEventListener("turbo:load", function() {
+  var prefectureSelect = document.getElementById('prefecture_id');
+  var shippingCostDisplay = document.getElementById('shipping-cost');
+  var totalPriceDisplay = document.getElementById('total-price');
+  var productPrice = parseInt(document.getElementById('product-price').textContent.replace('¥', '').replace(',', '')) || 0;
+  prefectureSelect.addEventListener('change', updateShippingAndTotal);
+  // 初期状態を設定
+  updateShippingAndTotal();
+  function updateShippingAndTotal() {
+    var selectedOption = prefectureSelect.options[prefectureSelect.selectedIndex];
+    var selectedPrefecture = selectedOption ? selectedOption.text : '';
+    // 配送料の計算
+    var shippingCost = (['北海道', '沖縄県'].includes(selectedPrefecture)) ? 1500 : 800;
+    shippingCostDisplay.innerText = shippingCost + '円';
+    // 合計金額の計算
+    var totalPrice = productPrice + shippingCost;
+    totalPriceDisplay.innerText = totalPrice + '円';
+  }
+});
 </script>
-
 <%= render "shared/footer" %>

@@ -8,7 +8,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @shipping_cost = @product.shipping_cost
   end
 
   def new
