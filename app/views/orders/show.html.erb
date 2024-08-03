@@ -3,6 +3,7 @@
   <h1>Order Complete</h1>
   <p class="complete-text">Your order has been successfully placed!</p>
   <%= link_to 'Back to Store', products_path, class: 'btn-backtostore' %>
+  <br>
   <%# Logoutページへのリンク %>
   <%= link_to "Logout", destroy_user_session_path, data: { turbo: false }, class: "btn-logout", onclick: "event.preventDefault(); document.getElementById('logout-form').submit();" %>
 </main>

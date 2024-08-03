@@ -6,3 +6,4 @@ import "product_price"
 import "card"
 import "./custom/kanamakihira_app_fnc"
 
+import "./custom/shipping_cost"

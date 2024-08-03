@@ -112,45 +112,25 @@
           </div>
           <%= f.text_field :phone_number, class: "input-default", id: "phone_number", placeholder: "例）09012345678", maxlength: "11" %>
         </div>
+        </div>
+        <%# /配送先の入力 %>
+        <%# 支払額の表示 %>
+        <div class="price-content">
+          <div class="price-text"><span>本体価格(税込) ¥<%= @product.price %></span></div>
+        </div>
+        <div class="price-content">
+          <span>配送料</span>
+          <p id="shipping-cost"></p> <!-- 配送料をここに表示 -->
+        </div>
+        <div class="price-content">
+          <span>合計お支払い金額</span>
+          <span><span id='total-price'></span></span> <!-- 合計金額をここに表示 -->
+        </div>
+        <%# /支払額の表示 %>
         <%= render 'shared/error_messages', model: @order_address %>
         <%= f.submit "BUY NOW", class: "link-btn small", id: "link-btn" %>
       <% end %>
-    </div>
-    <%# /配送先の入力 %>
-    <%# 支払額の表示 %>
-    <div class="price-content">
-      <div class="price-text"><span>本体価格(税込) ¥<%= @product.price %></span></div>
-    </div>
-    <div class="price-content">
-      <span>配送料</span>
-      <p id="shipping-cost"></p> <!-- 配送料をここに表示 -->
-    </div>
-    <div class="price-content">
-      <span>合計お支払い金額</span>
-      <span><span id='total-price'></span></span> <!-- 合計金額をここに表示 -->
-    </div>
-    <%# /支払額の表示 %>
   </div>
 </main>
-<script>
-document.addEventListener("turbo:load", function() {
-  var prefectureSelect = document.getElementById('prefecture_id');
-  var shippingCostDisplay = document.getElementById('shipping-cost');
-  var totalPriceDisplay = document.getElementById('total-price');
-  var productPrice = parseInt(document.getElementById('product-price').textContent.replace('¥', '').replace(',', '')) || 0;
-  prefectureSelect.addEventListener('change', updateShippingAndTotal);
-  // 初期状態を設定
-  updateShippingAndTotal();
-  function updateShippingAndTotal() {
-    var selectedOption = prefectureSelect.options[prefectureSelect.selectedIndex];
-    var selectedPrefecture = selectedOption ? selectedOption.text : '';
-    // 配送料の計算
-    var shippingCost = (['北海道', '沖縄県'].includes(selectedPrefecture)) ? 1500 : 800;
-    shippingCostDisplay.innerText = shippingCost + '円';
-    // 合計金額の計算
-    var totalPrice = productPrice + shippingCost;
-    totalPriceDisplay.innerText = totalPrice + '円';
-  }
-});
-</script>
+
 <%= render "shared/footer" %>
