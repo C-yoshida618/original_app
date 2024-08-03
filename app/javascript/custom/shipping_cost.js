@@ -1,4 +1,4 @@
-document.addEventListener("turbo:load", function() {
+const shippingCost = () => {
   var prefectureSelect = document.getElementById('prefecture_id');
   var shippingCostDisplay = document.getElementById('shipping-cost');
   var totalPriceDisplay = document.getElementById('total-price');
@@ -16,4 +16,7 @@ document.addEventListener("turbo:load", function() {
     var totalPrice = productPrice + shippingCost;
     totalPriceDisplay.innerText = totalPrice + '円';
   }
-});
+};
+
+window.addEventListener("turbo:load", shippingCost);
+window.addEventListener("turbo:render", shippingCost);

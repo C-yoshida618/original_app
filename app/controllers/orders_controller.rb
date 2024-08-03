@@ -1,14 +1,12 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_order, except: [:index, :show]
   before_action :set_item, only: [:index, :create]
+  before_action :move_to_order, only: [:index]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @product = Product.find(params[:product_id])
     @order_address = OrderAddress.new
     # 必要な処理を行った後にリダイレクトする
-    
   end
 
   def show
@@ -22,17 +20,12 @@ class OrdersController < ApplicationController
     if @order_address.valid?
       pay_item
       @order_address.save
-        # Assuming you have an order object saved somewhere in the process
-        @order = @product.order # This assumes the last order is the one just created
-        redirect_to product_order_path(@product, @order)
-      else
-        render :index, status: :unprocessable_entity
-      end
-    
+      @order = Order.last
+      redirect_to product_order_path(@product, @order)
+    else
+      render :index, status: :unprocessable_entity
     end
-
-  
-
+  end
 
   private
 
@@ -47,17 +40,17 @@ class OrdersController < ApplicationController
   end
 
   def move_to_order
-    unless user_signed_in?
-      redirect_to action: :index
+    if @product.order.present?
+      redirect_to root_path, alert: "この商品は既に購入されています。"
     end
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: @product.price,  # 商品の値段
-      card: order_params[:token],    # カードトークン
-      currency: 'jpy'                # 通貨の種類（日本円）
+      amount: @product.price,    # 商品の値段
+      card: order_params[:token], # カードトークン
+      currency: 'jpy'            # 通貨の種類（日本円）
     )
   end
 end

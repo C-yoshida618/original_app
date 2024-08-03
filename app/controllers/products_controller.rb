@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   #before_action :authenticate_user! これを記述するとTOPに飛ばなくなる
   load_and_authorize_resource
+  before_action :move_to_order, only: [:new]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -48,5 +49,13 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:product_name, :description, :price, 
      :shipping_cost_id, :image_url)
+
+
+  end
+
+  def move_to_order
+    if @product.order.present?
+      redirect_to root_path
+    end
   end
 end

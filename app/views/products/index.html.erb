@@ -18,14 +18,14 @@
   <div class="products">
     <% @products.each do |product| %>
       <div class="product">
-        <%= link_to product_path(product) do %>
+        <%= link_to product_orders_path(product.id) do %>
           <% if product.image_url.attached? %>
           <%= image_tag product.image_url, width: "200px" %>
           <% else %>
           <%= image_tag "product1.jpg",  width: "200px" %>
           <% end %>
           <%# 商品が売れている場合は、sold out %>
-          <% if @product.present? %>
+          <% if product.order.present? %>
           <div class="sold-out">
             <span>Sold Out!!</span>
           </div>

@@ -32,6 +32,7 @@
     </div>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
+    <%= form_with(model: @order_address, url: product_orders_path, id: 'charge-form', class: 'card-form-wrap', local: true) do |f| %>
       <h1 class='info-input-headline'>
         クレジットカード情報入力
       </h1>
@@ -64,12 +65,12 @@
         </div>
         <div id="cvc-form" class="input-default"></div>
       </div>
-    </div>
-    <%# /カード情報の入力 %>
-    <%# 配送先の入力 %>
-    <div class='shipping-address-form'>
+      </div>
+      <%# /カード情報の入力 %>
+      <%# 配送先の入力 %>
+      <div class='shipping-address-form'>
       <p class='info-input-headline'>配送先入力</p>
-      <%= form_with(model: @order_address, url: product_orders_path, id: 'charge-form', class: 'card-form-wrap', local: true) do |f| %>
+      
         <div class="form-group">
           <div class='form-text-wrap'>
             <label class="form-text">郵便番号</label>
@@ -129,7 +130,7 @@
         <%# /支払額の表示 %>
         <%= render 'shared/error_messages', model: @order_address %>
         <%= f.submit "BUY NOW", class: "link-btn small", id: "link-btn" %>
-      <% end %>
+    <% end %>
   </div>
 </main>
 
