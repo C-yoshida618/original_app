@@ -48,14 +48,12 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:product_name, :description, :price, 
-     :shipping_cost_id, :image_url)
-
-
+    :shipping_cost_id, :image_url)
   end
 
   def move_to_order
     if @product.order.present?
-      redirect_to root_path
+      redirect_to products_path
     end
   end
 end

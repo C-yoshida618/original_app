@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
 
   def move_to_order
     if @product.order.present?
-      redirect_to root_path, alert: "この商品は既に購入されています。"
+      redirect_to products_path, alert: "この商品は既に購入されています。"
     end
   end
 
