@@ -1,43 +1,42 @@
 <%= render "shared/header" %>
 <main id="products">
   <h1>Online store</h1>
-    <div class="inner">
+  <div class="inner">
     <% if user_signed_in? %>
       <div class="greeting">
         HELLO!
-        <%= link_to " #{current_user.name}さん", user_session_path(current_user.id)%>
-        
+        <%= link_to " #{current_user.name}さん", user_session_path(current_user.id) %>
       </div>
     <% else %>
-    <p class="products-text">ご注文はユーザー登録をお願いします</p>
-    <div class="link-btn-box">
-      <%= link_to "Click here to order and register", new_user_registration_path, class: "link-btn" %>
-    </div>
-    <% end %>
-    
-  <div class="products">
-    <% @products.each do |product| %>
-      <div class="product">
-        <%= link_to product_orders_path(product.id) do %>
-          <% if product.image_url.attached? %>
-          <%= image_tag product.image_url, width: "200px" %>
-          <% else %>
-          <%= image_tag "product1.jpg",  width: "200px" %>
-          <% end %>
-          <%# 商品が売れている場合は、sold out %>
-          <% if product.order.present? %>
-          <div class="sold-out">
-            <span>Sold Out!!</span>
-          </div>
-          <% end %>
-        <% end %>
-        <div class="product-name"><%= product.product_name %></div>
-        <div class="product-description"><%= product.description %></div>
-        <div class="product-price">¥<%= product.price %>(※送料別)</div>
-        <br>
-        <%= link_to 'BUY', product_orders_path(product.id), data: { turbo_method: :get }, class: "link-btn small" %>
+      <p class="products-text">ご注文はユーザー登録をお願いします</p>
+      <div class="link-btn-box">
+        <%= link_to "Click here to order and register", new_user_registration_path, class: "link-btn" %>
       </div>
     <% end %>
+    
+    <div class="products">
+      <% @products.each do |product| %>
+        <div class="product">
+          <%= link_to product_orders_path(product.id) do %>
+            <% if product.image_url.attached? %>
+              <%= image_tag product.image_url, width: "200px" %>
+            <% else %>
+              <%= image_tag "product1.jpg", width: "200px" %>
+            <% end %>
+            <% if product.order.present? %>
+              <div class="sold-out">
+                <span>Sold Out!!</span>
+              </div>
+            <% end %>
+          <% end %>
+          <div class="product-name"><%= product.product_name %></div>
+          <div class="product-description"><%= product.description %></div>
+          <div class="product-price">¥<%= product.price %>(※送料別)</div>
+          <br>
+          <%= link_to 'BUY', product_orders_path(product.id), data: { turbo: false }, class: "link-btn small" %> 
+        </div>
+      <% end %>
+    </div>
   </div>
 </main>
 <%= render "shared/footer" %>
