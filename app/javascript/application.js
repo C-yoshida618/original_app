@@ -7,3 +7,5 @@ import "card"
 import "./custom/kanamakihira_app_fnc"
 
 import "./custom/shipping_cost"
+
+import { Turbo } from "@hotwired/turbo-rails"

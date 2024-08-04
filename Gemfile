@@ -89,3 +89,5 @@ gem 'payjp'
 gem 'gon'
 
 gem 'pry-rails'
+
+gem 'paranoia', '~> 2.4'

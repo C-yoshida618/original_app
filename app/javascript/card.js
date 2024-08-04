@@ -12,8 +12,12 @@ const pay = () => {
 
   const form = document.getElementById('charge-form')
   form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
+        // エラー処理
+        console.error(response.error);
       } else {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
@@ -25,8 +29,7 @@ const pay = () => {
       cvcElement.clear();
       document.getElementById("charge-form").submit();
     });
-    e.preventDefault();
   });
 };
 
-window.addEventListener("turbo:load", pay);
+window.addEventListener("load", pay);;

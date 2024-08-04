@@ -9,4 +9,9 @@ Rails.application.routes.draw do
   resources :products do
     resources :orders, only: [:index, :create, :show]
   end
+
+  namespace :admin do
+    resources :products
+    resources :users, only: [:index, :edit, :update] # ユーザー管理のルーティング
+  end
 end

@@ -1,0 +1,26 @@
+<!-- app/views/admin/products/index.html.erb -->
+<h1>Admin Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.product_name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td>
+          <%= button_to 'Delete', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
