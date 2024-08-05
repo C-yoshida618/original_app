@@ -1,19 +1,29 @@
 <nav id="global-menu" class="flex">
+  <!-- 左側のコンテンツ -->
   <div class="left-content flex">
-
-    <%# Loginページへのリンク %>
+    <!-- Loginページへのリンク -->
     <%= link_to "Login", new_user_session_path, data: { turbo: false }, class: "header-menu" %>
-    <%# Logoutページへのリンク %>
+
+    <!-- Logoutページへのリンク -->
     <%= link_to "Logout", destroy_user_session_path, data: { turbo: false }, class: "header-menu", onclick: "event.preventDefault(); document.getElementById('logout-form').submit();" %>
     <%= form_with url: destroy_user_session_path, method: :delete, id: "logout-form", style: "display: none;" do %>
     <% end %>
+
+    <!-- Instagram リンク -->
+    <a class="instagram-logo" href="https://www.instagram.com/cycp_products/" target="_blank" rel="noopener noreferrer">
+      <%= image_tag 'Instagram_Glyph_Black.svg', alt: 'Instagram' %>
+    </a>
   </div>
-  <%# TOPページへのリンク %>
+
+  <!-- 中央のコンテンツ -->
   <div class="center-content">
-        <%= link_to image_tag("cycpp_logo_k.svg"), root_path, data: { turbo: false }, class: "header-logo" %>
+    <%= link_to image_tag("cycpp_logo_k.svg"), data: { turbo: false }, class: "link-btn" %>
   </div>
+
+  <!-- 右側のコンテンツ -->
   <div class="right-content">
     <%= link_to "ONLINE STORE", products_path, class: "online-store-btn" %>
   </div>
 </nav>
+
 

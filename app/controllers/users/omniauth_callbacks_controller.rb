@@ -3,6 +3,10 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :verify_authenticity_token, only: [:google_oauth2]
 
+  def facebook
+    authorization
+  end
+
   def google_oauth2
     authorization
   end

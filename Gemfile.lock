@@ -189,6 +189,9 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
+    omniauth-facebook (10.0.0)
+      bigdecimal
+      omniauth-oauth2 (>= 1.2, < 3)
     omniauth-google-oauth2 (1.1.2)
       jwt (>= 2.0)
       oauth2 (~> 2.0)
@@ -338,6 +341,7 @@ DEPENDENCIES
   mini_magick
   mysql2 (~> 0.5)
   omniauth (~> 2.1.1)
+  omniauth-facebook
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   paranoia (~> 2.4)

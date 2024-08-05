@@ -1,3 +1,6 @@
+// モジュールのインポート
+import { someFunction } from "./some_other_file.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const shippingCost = () => {
     const prefectureSelect = document.getElementById('prefecture_id');
@@ -16,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const totalPrice = productPrice + shippingCost;
       totalPriceDisplay.innerText = totalPrice + '円';
     }
+
+    // モジュールの使用
+    someFunction();
   };
 
   shippingCost();

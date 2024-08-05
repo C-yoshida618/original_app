@@ -2,3 +2,12 @@
   text-decoration: none;
   margin-right: 30px;
 }
+
+.instagram-logo {
+  display: block;
+  width: 24px;
+}
+
+.instagram-logo img {
+  width: 100%;
+}
