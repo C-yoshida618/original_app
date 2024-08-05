@@ -2,5 +2,5 @@
   <%= link_to 'Edit', edit_product_path(@product) %> |
 <% end %>
 <% if can? :destroy, @product %>
-  <%= link_to 'Delete', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Delete', @product, data: { turbo: false }, data: { confirm: 'Are you sure?' } %>
 <% end %>

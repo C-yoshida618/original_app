@@ -87,7 +87,7 @@
   </div>
   <!--ボタン-->
     <div class="link-btn-box">
-      <%= link_to "Click here for the portfolio", portfolio_path, class: "link-btn" %>
+      <%= link_to "Click here for the portfolio", portfolio_path, data: { turbo: false }, class: "link-btn" %>
     </div>
   <!--Info-->
   <div class="infomation-box">
@@ -119,7 +119,7 @@
         <br>
           <!--オンラインストアへのリンクボタン-->
           <div class="link-btn-box">
-            <%= link_to "Click here online store", products_path, class: "link-btn" %>
+            <%= link_to "Click here online store", products_path, data: { turbo: false }, class: "link-btn" %>
           </div>
       </div>
     </div>
@@ -130,7 +130,7 @@
       <p class="contact-text">お仕事依頼やお問い合わせはこちらから</p>
       <br>
       <br>
-        <%= link_to "Contact", "mailto:kana.yoshida@nawgraph.com", class: "link-btn" %>
+        <%= link_to "Contact", "mailto:kana.yoshida@nawgraph.com", data: { turbo: false }, class: "link-btn" %>
     </div>
     
 </article>
