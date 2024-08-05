@@ -7,6 +7,7 @@
       <th>Product Name</th>
       <th>Description</th>
       <th>Price</th>
+      <th>Image</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -17,10 +18,19 @@
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td>
+          <% if product.image_url.attached? %>
+          <%= image_tag product.image_url, style: "width: 50px; height: auto;" %>
+          <% else %>
+          <%= image_tag "product1.jpg", style: "width: 50px; height: auto;" %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Edit Image', edit_admin_product_path(product) %> <!-- 画像編集ページへのリンク -->
           <%= button_to 'Delete', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %>
-
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+

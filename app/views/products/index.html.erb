@@ -19,9 +19,9 @@
         <div class="product">
           <%= link_to product_orders_path(product.id) do %>
             <% if product.image_url.attached? %>
-              <%= image_tag product.image_url, width: "200px" %>
+              <%= image_tag product.image_url, style: "width: 400px; height: auto;" %>
             <% else %>
-              <%= image_tag "product1.jpg", width: "200px" %>
+              <%= image_tag "product1.jpg", style: "width: 400px; height: auto;"  %>
             <% end %>
             <% if product.order.present? %>
               <div class="sold-out">

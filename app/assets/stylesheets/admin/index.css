@@ -1,0 +1,10 @@
+.img {
+  /* 全体的な画像スタイル */
+  /* 例: max-width: 100%; */
+}
+
+.admin-image-box {
+  /* このスタイルが特定の画像に適用される */
+  width: 50px !important; /* 幅を固定 */
+  height: auto; /* 高さは自動的に調整 */
+}

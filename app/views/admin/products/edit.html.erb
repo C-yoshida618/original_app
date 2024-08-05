@@ -1,0 +1,24 @@
+<!-- app/views/admin/products/edit.html.erb -->
+<h1>Edit Product</h1>
+
+<%= form_with(model: @product, url: admin_product_path(@product), method: :patch, local: true, html: { multipart: true }) do |form| %>
+  <div>
+    <%= form.label :product_name %>
+    <%= form.text_field :product_name %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+  <div>
+    <%= form.label :image_url %>
+    <%= form.file_field :image_url %> <!-- 画像ファイルのアップロードフィールド -->
+  </div>
+  <div>
+    <%= form.submit 'Update Product' %>
+  </div>
+<% end %>
