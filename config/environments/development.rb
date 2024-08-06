@@ -75,7 +75,7 @@ config.action_mailer.smtp_settings = {
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-  config.assets.compile = true
+
   config.assets.debug = true
 
   # Raises error for missing translations.
