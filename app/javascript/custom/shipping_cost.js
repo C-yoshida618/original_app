@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalPriceDisplay = document.getElementById('total-price');
     const productPrice = parseInt(document.getElementById('product-price').textContent.replace('¥', '').replace(',', '')) || 0;
 
-    prefectureSelect.addEventListener('change', updateShippingAndTotal);
-    updateShippingAndTotal();
+    if (prefectureSelect && shippingCostDisplay && totalPriceDisplay) {
+      prefectureSelect.addEventListener('change', updateShippingAndTotal);
+      updateShippingAndTotal();
+    }
 
     function updateShippingAndTotal() {
       const selectedOption = prefectureSelect.options[prefectureSelect.selectedIndex];
