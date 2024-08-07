@@ -12,6 +12,11 @@ img {
   height: auto;
 }
 
+.custom-image {
+  width: 150px;  /* 画像の幅を150pxに設定 */
+  height: auto;  /* 高さを自動に設定（アスペクト比を保つため） */
+}
+
 /*flex*/
 .flex {
   display: -webkit-flex;

@@ -21,7 +21,9 @@
       </div>
     <% end %>
   </div>
-  <%= button_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, data: { turbo: false } %>
+    <%= link_to user_google_oauth2_omniauth_authorize_path, data: { turbo: false } do %>
+    <%= image_tag "web_dark_rd_SU@4x.png", class: "custom-image" %>
+<% end %>
 </main>
 
 <%= render "shared/footer" %>
