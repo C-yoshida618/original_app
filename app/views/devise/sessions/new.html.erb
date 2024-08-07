@@ -21,6 +21,7 @@
       </div>
     <% end %>
   </div>
+  <%= button_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, data: { turbo: false } %>
 </main>
 
 <%= render "shared/footer" %>
