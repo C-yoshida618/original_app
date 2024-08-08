@@ -1,13 +1,40 @@
-# テーブル設計
+# CYCPP
 
-#### intro
+<TOPcontent>
+# intro
+# main#index
+header(Login/Logout/instagram/logo/onlinestoreへのリンク)
+about(会社案内とportfolioページへのリンク)/info(news)/products(商品説明とonlinestoreへのリンク)/contact(gmailへのリンク)/footer
+<Portfolio>
+# main#show
+image/contact(gmailへのリンク)
+<User registration>注文ページに飛びたい場合は登録を促す
+# devise#registration
+<Log in>Google SNSログイン認証の導入
+# devise#sessions
+<Log out>
 
-#### main
-about/info/products/online_store/contact
+<Online store>
+# product#index
+商品のimage/product_name/description/price
+# order#index
+商品のimage/product_name/description/price
+カード情報入力/配送先入力/orderボタン
 
-#### online_shop
+<Order complete>
+# order#show
+Back online store/Logout へのリンク
 
-## usersテーブル
+管理者ページについて ログイン後URL直打ち
+<Admin>
+# admin#new
+商品の新規投稿--商品のimage/product_name/description/price
+# admin#index
+商品一覧管理--delete(商品の削除ボタン)
+
+# online_shopのテーブル設計
+
+# usersテーブル
 
 | Column             | Type       | Options     |
 | ------             | ------     | ----------- |
@@ -17,13 +44,13 @@ about/info/products/online_store/contact
 | encrypted_password | string     | null: false |
 | admin              | boolean    | default: false, null: false |
 
-### Association
+# Association
 
 - has_many :products
 - has_many :orders
 
 
-## products テーブル
+# products テーブル
 
 | Column       | Type       | Options     |
 | ------       | ------     | ----------- |
@@ -32,12 +59,12 @@ about/info/products/online_store/contact
 | description  | text       | null: false |
 | price        | integer    | null: false |
 
-### Association
+# Association
 
 - belongs_to:user
 - has_one :order
 
-## Addresses テーブル
+# Addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------        | ---------- | ------------------------------ |
@@ -49,12 +76,12 @@ about/info/products/online_store/contact
 | building_name | string     | 
 | phone_number  | string     | null: false |
 
-### Association
+# Association
 
 - belongs_to :user
 
 
-## orders テーブル
+# orders テーブル
 
 | Column        | Type       | Options                        |
 | ------        | ---------- | ------------------------------ |
@@ -62,9 +89,21 @@ about/info/products/online_store/contact
 | product       | references | null: false, foreign_key: true |
 | shipping_cost | integer    | null: false |
 
-### Association
+# Association
 
 - belongs_to :user
 - belongs_to :product
 - has_one : address
+
+# SNS credentuals テーブル(Google SNS)
+
+| Column        | Type       | Options                        |
+| ------        | ---------- | ------------------------------ |
+| user          | references | null: false, foreign_key: true |
+| provider      | string     | null: false |
+| uid           | string     | null: false |
+
+# Association
+
+- belongs_to :user
 
