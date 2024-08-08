@@ -107,3 +107,5 @@ Back online store/Logout へのリンク
 
 - belongs_to :user
 
+
+
