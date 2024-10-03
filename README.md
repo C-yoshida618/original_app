@@ -1,40 +1,48 @@
-# CYCPP
+# README
 
-<TOPcontent>
-# intro
-# main#index
-header(Login/Logout/instagram/logo/onlinestoreへのリンク)
-about(会社案内とportfolioページへのリンク)/info(news)/products(商品説明とonlinestoreへのリンク)/contact(gmailへのリンク)/footer
-<Portfolio>
-# main#show
+# アプリケーション名
+CYCPP
+
+# URL
+
+# テスト用アカウント
+・Basic認証パスワード：2222<br>
+・Basic認証ID：admin<br>
+
+# 利用方法とページ案内
+・TOPページ<br>
+header(Login/Logout/instagram/logo/onlinestoreへのリンク)<br>
+about(会社案内とportfolioページへのリンク)/info(news)<br>
+products(商品説明とonlinestoreへのリンク)/contact(gmailへのリンク)/footer<br>
 image/contact(gmailへのリンク)
-<User registration>注文ページに飛びたい場合は登録を促す
-# devise#registration
-<Log in>Google SNSログイン認証の導入
-# devise#sessions
-<Log out>
+<br>
+・Portfolioページ
+・User registration　注文ページに飛びたい場合は登録を促す<br>
 
-<Online store>
-# product#index
+・Log in　Google SNSログイン認証の導入<br>
+・Log out<br>
+
+・Online storeページ
+product#index<br>
 商品のimage/product_name/description/price
-# order#index
-商品のimage/product_name/description/price
-カード情報入力/配送先入力/orderボタン
+order#index<br>
+商品のimage/product_name/description/price<br>
+カード情報入力/配送先入力/orderボタン<br>
 
-<Order complete>
-# order#show
-Back online store/Logout へのリンク
+・Order completeページ
+・order#show<br>
+・Back online store/Logout へのリンク<br>
 
-管理者ページについて ログイン後URL直打ち
-<Admin>
-# admin#new
-商品の新規投稿--商品のimage/product_name/description/price
-# admin#index
+・管理者ページについて ログイン後URL直打ち<br>
+Admin<br>
+admin#new<br>
+商品の新規投稿--商品のimage/product_name/description/price<br>
+admin#index<br>
 商品一覧管理--delete(商品の削除ボタン)
 
-# online_shopのテーブル設計
+# Onlinestoreのデータベース設計
 
-# usersテーブル
+・usersテーブル
 
 | Column             | Type       | Options     |
 | ------             | ------     | ----------- |
@@ -44,13 +52,13 @@ Back online store/Logout へのリンク
 | encrypted_password | string     | null: false |
 | admin              | boolean    | default: false, null: false |
 
-# Association
+・Association
 
 - has_many :products
 - has_many :orders
 
 
-# products テーブル
+・products テーブル
 
 | Column       | Type       | Options     |
 | ------       | ------     | ----------- |
@@ -59,12 +67,12 @@ Back online store/Logout へのリンク
 | description  | text       | null: false |
 | price        | integer    | null: false |
 
-# Association
+・Association
 
 - belongs_to:user
 - has_one :order
 
-# Addresses テーブル
+・Addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------        | ---------- | ------------------------------ |
@@ -76,12 +84,12 @@ Back online store/Logout へのリンク
 | building_name | string     | 
 | phone_number  | string     | null: false |
 
-# Association
+・Association
 
 - belongs_to :user
 
 
-# orders テーブル
+・orders テーブル
 
 | Column        | Type       | Options                        |
 | ------        | ---------- | ------------------------------ |
@@ -89,13 +97,13 @@ Back online store/Logout へのリンク
 | product       | references | null: false, foreign_key: true |
 | shipping_cost | integer    | null: false |
 
-# Association
+・Association
 
 - belongs_to :user
 - belongs_to :product
 - has_one : address
 
-# SNS credentuals テーブル(Google SNS)
+・SNS credentuals テーブル(Google SNS)
 
 | Column        | Type       | Options                        |
 | ------        | ---------- | ------------------------------ |
@@ -103,9 +111,11 @@ Back online store/Logout へのリンク
 | provider      | string     | null: false |
 | uid           | string     | null: false |
 
-# Association
+・Association
 
 - belongs_to :user
 
+# 開発環境と工夫したポイント
 
-
+・"cancancan"gemの導入によりユーザーページと管理者ページで管理可能<br>
+・フロントエンドのJSアニメーション導入によりユーザーエンゲージメントを高めるられるように工夫
