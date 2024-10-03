@@ -3,19 +3,35 @@
 # アプリケーション名
 CYCPP
 
+# アプリの概要
+・会社案内<br>
+・実績ポートフォリオ<br>
+・プロダクトオンラインストア<br>
+・SNS(instagram連携)<br>
+・SNS google認証<br>
+・仕事依頼contact<br>
+
 # URL
+https://original-app-7coe.onrender.com<br>
+(期限切れのため、下記にHP動画を添付)
 
 # テスト用アカウント
 ・Basic認証パスワード：2222<br>
 ・Basic認証ID：admin<br>
 
-# 利用方法とページ案内
+# 実装したGIF動画・ページ案内
+
+https://share.zight.com/BluvrwQJ
+
+https://share.zight.com/X6uvgg6B
+
 ・TOPページ<br>
 header(Login/Logout/instagram/logo/onlinestoreへのリンク)<br>
 about(会社案内とportfolioページへのリンク)/info(news)<br>
 products(商品説明とonlinestoreへのリンク)/contact(gmailへのリンク)/footer<br>
 image/contact(gmailへのリンク)
 <br>
+
 ・Portfolioページ
 ・User registration　注文ページに飛びたい場合は登録を促す<br>
 
@@ -27,20 +43,21 @@ product#index<br>
 商品のimage/product_name/description/price
 order#index<br>
 商品のimage/product_name/description/price<br>
-カード情報入力/配送先入力/orderボタン<br>
+商品購入機能：カード情報入力/配送先入力/orderボタン<br>
 
 ・Order completeページ
 ・order#show<br>
 ・Back online store/Logout へのリンク<br>
 
 ・管理者ページについて ログイン後URL直打ち<br>
-Admin<br>
-admin#new<br>
+Adminページ admin#new<br>
 商品の新規投稿--商品のimage/product_name/description/price<br>
 admin#index<br>
-商品一覧管理--delete(商品の削除ボタン)
+商品一覧管理ページ
 
 # Onlinestoreのデータベース設計
+
+https://gyazo.com/53ffff58c995f2ba8b30302def12231c
 
 ・usersテーブル
 
