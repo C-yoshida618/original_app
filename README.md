@@ -33,7 +33,7 @@ products(商品説明とonlinestoreへのリンク)/contact(gmailへのリンク
 image/contact(gmailへのリンク)
 <br>
 
-・Portfolioページ
+・Portfolioページ<br>
 ・ユーザー登録　注文ページに飛びたい場合は登録を促す<br>
 ・Log in　Google SNSログイン認証の導入<br>
 ・Log out<br>
