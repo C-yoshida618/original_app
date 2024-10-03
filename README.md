@@ -7,6 +7,7 @@ CYCPP
 ・会社案内<br>
 ・実績ポートフォリオ<br>
 ・プロダクトオンラインストア<br>
+・ユーザー登録
 ・SNS(instagram連携)<br>
 ・SNS google認証<br>
 ・仕事依頼contact<br>
@@ -33,8 +34,7 @@ image/contact(gmailへのリンク)
 <br>
 
 ・Portfolioページ
-・User registration　注文ページに飛びたい場合は登録を促す<br>
-
+・ユーザー登録　注文ページに飛びたい場合は登録を促す<br>
 ・Log in　Google SNSログイン認証の導入<br>
 ・Log out<br>
 
