@@ -21,9 +21,7 @@ https://original-app-pg5p.onrender.com
 
 # 実装したGIF動画・ページ案内
 
-https://share.zight.com/BluvrwQJ
-
-https://share.zight.com/X6uvgg6B
+https://share.zight.com/9ZuJgq6B.gif
 
 ・TOPページ<br>
 header(Login/Logout/instagram/logo/onlinestoreへのリンク)<br>
@@ -33,7 +31,11 @@ image/contact(gmailへのリンク)
 <br>
 
 ・Portfolioページ<br>
-・ユーザー登録　注文ページに飛びたい場合は登録を促す<br>
+仕事依頼や問い合わせのメールへのリンク
+
+・商品購入のためのユーザー登録機能<br>
+ユーザー登録　注文ページに飛びたい場合は登録を促す<br>
+
 ・Log in　Google SNSログイン認証の導入<br>
 ・Log out<br>
 
@@ -42,7 +44,8 @@ product#index<br>
 商品のimage/product_name/description/price
 order#index<br>
 商品のimage/product_name/description/price<br>
-商品購入機能：カード情報入力/配送先入力/orderボタン<br>
+配送料の計算 都道府県によって送料が異なるため、jsで地域別の配送料を設定<br>
+クレジット機能：カード情報入力/配送先入力/orderボタン<br>
 
 ・Order completeページ
 ・order#show<br>
@@ -59,7 +62,6 @@ admin#index<br>
 
 # Onlinestoreのデータベース設計
 
-https://gyazo.com/53ffff58c995f2ba8b30302def12231c
 
 ・usersテーブル
 
