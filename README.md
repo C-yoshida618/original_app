@@ -21,7 +21,7 @@ https://original-app-pg5p.onrender.com
 
 # 実装したGIF動画・ページ案内
 
-https://gyazo.com/2fd3ceaf8b7eaf46094c772926ae8a1d.gif
+https://i.gyazo.com/2fd3ceaf8b7eaf46094c772926ae8a1d.gif
 
 ↓下記URLにより詳細を掲載しています。<br>
 https://share.zight.com/9ZuJgq6B.gif<br>
