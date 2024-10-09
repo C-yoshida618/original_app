@@ -13,8 +13,7 @@ CYCPP
 ・仕事依頼contact<br>
 
 # URL
-https://original-app-7coe.onrender.com<br>
-(期限切れのため、下記にHP動画を添付)
+https://original-app-pg5p.onrender.com
 
 # テスト用アカウント
 ・Basic認証パスワード：2222<br>
